@@ -47,6 +47,7 @@
       <groupId>org.geckoprojects.emf</groupId>
       <artifactId>org.gecko.emf.osgi.bom</artifactId>
     </dependency>
+    
   </dependencies>
 
   <build>
@@ -62,6 +63,44 @@
       <plugin>
         <groupId>biz.aQute.bnd</groupId>
         <artifactId>bnd-resolver-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-export-maven-plugin</artifactId>
+        <version>${bnd.version}</version>
+        <configuration>
+          <resolve>false</resolve>
+          <failOnChanges>false</failOnChanges>
+          <includeDependencyManagement>true</includeDependencyManagement>
+          <exporter>osgi.feature</exporter>
+          <scopes>
+            <scope>compile</scope>
+            <scope>runtime</scope>
+            <scope>test</scope>
+          </scopes>
+          <bundles>
+            <bundle>${project.build.directory}/${project.build.finalName}.jar</bundle>
+          </bundles>
+          <bndruns>
+            <include>feature-export.bndrun</include>
+          </bndruns>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>export</goal>
+            </goals>
+          </execution>
+        </executions>
+<!-- 
+        <dependencies>
+          <dependency>
+            <groupId>org.eclipse.sensinact.gateway.tools</groupId>
+            <artifactId>feature</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+-->
       </plugin>
     </plugins>
   </build>

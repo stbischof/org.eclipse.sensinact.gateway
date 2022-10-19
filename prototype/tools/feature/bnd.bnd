@@ -1,0 +1,4 @@
+-includeresource.1:\
+    @org.osgi.service.feature-1.0.0.jar
+-includeresource.2:\
+    @biz.aQute.bnd.reporter-6.4.0-SNAPSHOT.jar
