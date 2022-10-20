@@ -107,6 +107,7 @@
     <module>core</module>
     <module>examples</module>
     <module>sensinact-bom</module>
+    <module>tools</module>
   </modules>
 
   <properties>
@@ -351,11 +352,15 @@
                 <goal>bnd-process</goal>
               </goals>
               <configuration>
-                <bnd><![CDATA[
+                <bnd>
+                  <![CDATA[
                 Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
+                Bundle-Name: ${project.name}
+                Bundle-Description: ${project.description}
                 Git-Descriptor: ${system-allow-fail;git describe --dirty --always --abbrev=9}
                 Git-SHA: ${system-allow-fail;git rev-list -1 --no-abbrev-commit HEAD}
-                ]]></bnd>
+                ]]>
+                </bnd>
                 <bndfile>bnd.bnd</bndfile>
               </configuration>
             </execution>
@@ -366,13 +371,15 @@
                 <goal>bnd-process-tests</goal>
               </goals>
               <configuration>
-                <bnd><![CDATA[
+                <bnd>
+                  <![CDATA[
                 Bundle-SymbolicName: ${project.groupId}.${project.artifactId}-tests
                 Fragment-Host: ${project.groupId}.${project.artifactId}
                 Git-Descriptor: ${system-allow-fail;git describe --dirty --always --abbrev=9}
                 Git-SHA: ${system-allow-fail;git rev-list -1 --no-abbrev-commit HEAD}
                 Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE;NAMED;*.integration.*}
-                ]]></bnd>
+                ]]>
+                </bnd>
                 <bndfile>tests.bnd</bndfile>
                 <testCases>useTestCasesHeader</testCases>
               </configuration>
@@ -487,11 +494,56 @@
           </executions>
         </plugin>
         <plugin>
+          <groupId>biz.aQute.bnd</groupId>
+          <artifactId>bnd-reporter-maven-plugin</artifactId>
+          <version>${bnd.version}</version>
+          <configuration>
+            <reportConfigs>
+              <customConfig>
+                <reportPlugins>
+                  <reportPlugin>
+                    <pluginName>checksum</pluginName>
+                    <properties></properties>
+                  </reportPlugin>
+                  <!-- 
+                  <reportPlugin>
+                    <pluginName>codeSnippets</pluginName>
+                    <properties>
+                      <path>${project.basedir}/src/main/java/org/eclipse/sensinact/prototype/action</path>
+                    </properties>
+                  </reportPlugin>
+                  -->
+                </reportPlugins>
+              </customConfig>
+            </reportConfigs>
+            <reports>
+              <!-- 
+              <report>
+                <outputFile>${project.build.directory}/docs_a_metadata.json</outputFile>
+                <scope>aggregator</scope>
+                <configName>customConfig</configName>
+              </report>
+            -->
+              <report>
+                <outputFile>${project.build.directory}/docs_p_metadata.json</outputFile>
+                <scope>project</scope>
+                <configName>customConfig</configName>
+              </report>
+            </reports>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-reporter-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 </project>

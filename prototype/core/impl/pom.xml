@@ -19,6 +19,9 @@
   </parent>
   <artifactId>impl</artifactId>
 
+  <name>the Name</name>
+  <description>the Description</description>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>

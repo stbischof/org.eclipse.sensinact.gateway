@@ -10,7 +10,7 @@
 * Contributors:
 *   Kentyou - initial implementation 
 **********************************************************************/
-package org.eclipse.sensinact.prototype.action;
+package examples;
 
 import java.util.List;
 
@@ -21,19 +21,18 @@ import org.osgi.service.component.annotations.Component;
 
 
 /**
- * ${snippet title=_01_SimpleActionResourceNNNNNNN, description="Service properties define the provider that this resource is for.", groupName=group1} 
+ * ${snippet title=_01_SimpleActionResource2, description="Service properties define the provider that this resource is for.", groupName=group2} 
  */
-
 @WhiteboardResource
 @ProviderName("pull_based")
-@Component(service = _01_SimpleActionResource.class)
-public class _01_SimpleActionResource {
+@Component(service = _01_SimpleActionResource2.class)
+public class _01_SimpleActionResource2 {
 
     
 
     /**
-     * ${snippet title=myTitlennnnnnnnn, description="the description here",
-     * parentGroup=group1, includeDeclaration=false} 
+     * ${snippet title=myTitle2, description="the description here",
+     * parentGroup=group2, includeDeclaration=false} 
      *
      * A GET method for a service and resource
      * 
