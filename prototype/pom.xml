@@ -421,6 +421,7 @@
           <executions>
             <execution>
               <id>resolve-test</id>
+              <phase>pre-integration-test</phase>
               <goals>
                 <goal>resolve</goal>
               </goals>
