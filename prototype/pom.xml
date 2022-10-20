@@ -136,6 +136,10 @@
 
     <!-- plugin dependency versions -->
     <bnd.version>6.4.0-SNAPSHOT</bnd.version>
+    
+    <!-- sonar vars -->
+    <sonar.organization>stbischof</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <repositories>
