@@ -28,14 +28,13 @@ jobs:
     - name: Build with Maven (skip tests)
       run: mvn -P ci-build -B clean install -DskipTests --file pom.xml
 
-    - name: Upload class and jar Files
-      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+    - name: Cache build artifacts
+      uses: actions/cache/save@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.2.0
       with:
-        name: build-artifacts-${{ github.sha }}
         path: |
           ~/.m2/repository
           **/target
-        retention-days: 1
+        key: build-${{ github.sha }}-${{ github.run_id }}
 
     - name: Install dependencies for matrix generation
       run: |
@@ -72,10 +71,13 @@ jobs:
         cache: maven
 
     - name: Restore Maven build artifacts
-      uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
+      uses: actions/cache/restore@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.2.0
       with:
-        name: build-artifacts-${{ github.sha }}
-        path: .
+        path: |
+          ~/.m2/repository
+          **/target
+        key: build-${{ github.sha }}-${{ github.run_id }}
+        fail-on-cache-miss: true
 
     - name: Run unit tests for ${{ matrix.module }}
       run: |
@@ -88,6 +90,13 @@ jobs:
         cd ${{ matrix.module }}
         mvn -B verify -DskipTests=false
       continue-on-error: true
+
+    - name: Generate artifact name
+      id: artifact-name
+      run: |
+        # Replace slashes with dashes for artifact name
+        ARTIFACT_NAME=$(echo "${{ matrix.module }}" | sed 's/\//-/g')
+        echo "name=test-results-${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
 
     - name: Upload test results for ${{ matrix.module }}
       if: always()
