@@ -25,8 +25,8 @@ for pom in $pom_files; do
   fi
 done
 
-# Convert to JSON array
-json_array=$(printf '%s\n' "${modules[@]}" | jq -R . | jq -s .)
+# Convert to JSON array (compact, single line)
+json_array=$(printf '%s\n' "${modules[@]}" | jq -R . | jq -s -c .)
 
-# Output the matrix
-echo "{\"module\": $json_array}"
+# Output the matrix (compact, single line)
+echo "{\"module\": $json_array}" | jq -c .

@@ -31,10 +31,11 @@ jobs:
     - name: Upload class and jar Files
       uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
+        name: build-artifacts-${{ github.sha }}
         path: |
           ~/.m2/repository
           **/target
-        key: build-${{ github.sha }}
+        retention-days: 1
 
     - name: Install dependencies for matrix generation
       run: |
@@ -73,11 +74,8 @@ jobs:
     - name: Restore Maven build artifacts
       uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
       with:
-        path: |
-          ~/.m2/repository
-          **/target
-        key: build-${{ github.sha }}
-        fail-on-cache-miss: true
+        name: build-artifacts-${{ github.sha }}
+        path: .
 
     - name: Run unit tests for ${{ matrix.module }}
       run: |
@@ -95,11 +93,12 @@ jobs:
       if: always()
       uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.0
       with:
-        name: test-results-${{ matrix.module }}
+        name: ${{ steps.artifact-name.outputs.name }}
         path: |
           ${{ matrix.module }}/target/surefire-reports/*.xml
           ${{ matrix.module }}/target/failsafe-reports/*.xml
         if-no-files-found: ignore
+        retention-days: 1
 
   test-results:
     name: Collect Test Results
