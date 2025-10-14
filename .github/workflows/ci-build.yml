@@ -24,6 +24,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+
     - name: Build with Maven (skip tests)
       run: mvn -P ci-build -B clean install -DskipTests --file pom.xml
 
