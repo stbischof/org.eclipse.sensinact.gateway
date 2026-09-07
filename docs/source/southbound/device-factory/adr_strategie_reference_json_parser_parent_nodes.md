@@ -57,13 +57,13 @@ Input JSON:
 }
 ```
 
-* **Pros:** 
-  * Zero modifications to the core parser architecture for already mapping that don't need parent node value.
+* **Pros:**
+  * Zero modifications to the core parser architecture for mappings that don't need parent node values.
   * Keeps the mapping configuration self-contained within a single file.
-* **Cons:** 
+* **Cons:**
   * Highly brittle; if the JSON schema structure changes depth, all relative traversal counts (`../`) must be manually refactored.
   * Decreases mapping readability and increases debugging friction.
-  * need review implementation to retrieve from a child the correct parent node
+  * Needs review of implementation to correctly retrieve parent nodes from a child context.
 
 ---
 
@@ -112,11 +112,11 @@ Input JSON:
 }
 ```
 
-* **Pros:** 
+* **Pros:**
   * Completely decouples mapping configurations from absolute structural depth.
   * Highly readable and self-documenting syntax (`$team.id`).
   * Easily extensible for complex hierarchies involving multiple ancestor levels.
-* **Cons:** 
+* **Cons:**
   * Requires a minor modification to the parser configuration options and resolution logic to support named context scopes.
 
 ---
@@ -128,10 +128,7 @@ Allow mapping rules to bypass the restricted evaluation base by specifying absol
 #### Example Option 3
 
 Mapping Configuration:
-
-JSON
-
-```
+```json
 {
   "parser": "json",
   "parser.options": {
@@ -146,10 +143,7 @@ JSON
 ```
 
 Input JSON:
-
-JSON
-
-```
+```json
 {
   "company": {
     "id": "comp-001",
@@ -175,8 +169,6 @@ JSON
 - **Cons:**
   - Still couples the mapping configuration to the absolute structure of the JSON payload.
   - Verbose paths for deeply nested schemas.
-
-## 
 
 ---
 
