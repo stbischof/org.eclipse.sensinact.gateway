@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.core</groupId>
     <artifactId>core</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>annotation</artifactId>
   <name>SensiNact Core :: Annotations</name>

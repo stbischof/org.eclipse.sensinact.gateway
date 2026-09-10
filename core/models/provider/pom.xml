@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.core.models</groupId>
     <artifactId>models</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>provider</artifactId>

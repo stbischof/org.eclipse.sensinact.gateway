@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.southbound.history</groupId>
     <artifactId>history</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>timescale-provider</artifactId>
   <name>SensiNact Southbound :: History :: Timescale Provider</name>

@@ -20,7 +20,7 @@ SPDX-License-Identifier: EPL-2.0
   <parent>
     <groupId>org.eclipse.sensinact.gateway.examples</groupId>
     <artifactId>examples</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>notification</artifactId>
   <name>SensiNact Examples :: Notification</name>

@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.southbound.device-factory</groupId>
     <artifactId>device-factory</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>device-factory-core</artifactId>
   <name>SensiNact Southbound :: Device Factory :: Core</name>

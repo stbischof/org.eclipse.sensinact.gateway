@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.southbound.sensorthings</groupId>
     <artifactId>sensorthings</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>sensing.rest</artifactId>
   <name>SensiNact Southbound :: SensorThings :: Sensing REST</name>

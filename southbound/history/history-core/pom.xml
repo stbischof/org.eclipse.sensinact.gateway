@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.southbound.history</groupId>
     <artifactId>history</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>history-core</artifactId>
   <name>SensiNact Southbound :: History :: Core</name>

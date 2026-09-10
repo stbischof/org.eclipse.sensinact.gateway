@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.examples</groupId>
     <artifactId>examples</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>action</artifactId>
   <name>SensiNact Examples :: Action</name>

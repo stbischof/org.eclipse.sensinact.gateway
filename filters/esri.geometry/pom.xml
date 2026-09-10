@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.filters</groupId>
     <artifactId>filters</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>esri.geometry</artifactId>
   <name>SensiNact Filters :: ESRI Geometry</name>

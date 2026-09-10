@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.southbound.device-factory</groupId>
     <artifactId>device-factory</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>parser-json</artifactId>
   <name>SensiNact Southbound :: Device Factory :: JSON Parser</name>

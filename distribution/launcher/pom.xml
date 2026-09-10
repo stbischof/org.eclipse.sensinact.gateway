@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.distribution</groupId>
     <artifactId>distribution</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>launcher</artifactId>
   <name>SensiNact Distribution :: Launcher</name>

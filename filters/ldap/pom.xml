@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.filters</groupId>
     <artifactId>filters</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>ldap</artifactId>
   <name>SensiNact Filters :: LDAP</name>

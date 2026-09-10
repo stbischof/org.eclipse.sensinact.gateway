@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.eclipse.sensinact.gateway.filters</groupId>
     <artifactId>filters</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>filters.core</artifactId>
   <name>SensiNact Filters :: Core</name>
